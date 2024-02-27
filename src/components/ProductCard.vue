@@ -20,7 +20,11 @@
           ${{ getPriceWithDiscount(product.price, product.discountPercentage) }}
         </div>
       </div>
-      <button class="bg-indigo-500 text-white p-3 rounded-md">
+      <button
+        class="bg-indigo-500 text-white p-3 rounded-md"
+        :class="{ 'in-cart': isInCart(product.id) }"
+        @click="addToCart(product)"
+      >
         <ShoppingCartIcon class="w-5 h-5" />
       </button>
     </div>
@@ -28,9 +32,20 @@
 </template>
 
 <script setup>
+import { useCartStore } from "@/store/cart";
 import { ShoppingCartIcon } from "@heroicons/vue/24/outline";
 defineProps(["product"]);
+
+const store = useCartStore();
+
+const { addToCart, isInCart } = store;
 
 const getPriceWithDiscount = (oldPrice, discountPercentage) =>
   (oldPrice - (oldPrice * discountPercentage) / 100).toFixed(2);
 </script>
+
+<style scoped>
+.in-cart {
+  @apply pointer-events-none bg-indigo-300 text-indigo-600;
+}
+</style>

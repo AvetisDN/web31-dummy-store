@@ -4,6 +4,7 @@ import Blog from "./pages/Blog.vue";
 import Contact from "./pages/Contact.vue";
 import Error from "./pages/Error.vue";
 import CategoryVue from "./pages/Category.vue";
+import CartVue from "./pages/Cart.vue";
 
 const routes = [
   {
@@ -17,6 +18,10 @@ const routes = [
   {
     path: "/contact",
     component: Contact,
+  },
+  {
+    path: "/cart",
+    component: CartVue,
   },
   {
     path: "/category/:slug",
