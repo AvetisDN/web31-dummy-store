@@ -5,7 +5,7 @@
     >
       <Header />
       <main class="container mx-auto grow flex items-star p-4">
-        <router-view />
+        <router-view :key="$route.fullPath" />
       </main>
       <Footer />
     </div>
